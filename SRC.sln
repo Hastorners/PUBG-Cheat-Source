@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PUBG", "SRC\PUBG.vcxproj", "{E664959E-A49C-4A3B-9CF5-AC198DEA6030}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Debug|x64.ActiveCfg = Debug|x64
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Debug|x64.Build.0 = Debug|x64
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Debug|x86.ActiveCfg = Debug|Win32
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Debug|x86.Build.0 = Debug|Win32
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Release|x64.ActiveCfg = Release|x64
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Release|x64.Build.0 = Release|x64
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Release|x86.ActiveCfg = Release|Win32
+		{E664959E-A49C-4A3B-9CF5-AC198DEA6030}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE0F6079-BFF4-4F3C-B4B8-44D2962A782C}
+	EndGlobalSection
+EndGlobal
