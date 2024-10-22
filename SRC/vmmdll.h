@@ -1,19 +1,3 @@
-// vmmdll.h : header file to include in projects that use vmm.dll / vmm.so
-// 
-// Please also consult the guide at: https://github.com/ufrisk/MemProcFS/wiki
-// 
-// U/W functions
-// =============
-// Windows may access both UTF-8 *U and Wide-Char *W versions of functions
-// while Linux may only access UTF-8 versions. Some functionality may also
-// be degraded or unavailable on Linux.
-//
-// (c) Ulf Frisk, 2018-2023
-// Author: Ulf Frisk, pcileech@frizk.net
-//
-// Header Version: 5.4
-//
-
 #include "leechcore.h"
 
 #ifndef __VMMDLL_H__
@@ -29,7 +13,7 @@ extern "C" {
 #define EXPORTED_FUNCTION
 typedef unsigned __int64                    QWORD, *PQWORD;
 
-#endif /* _WIN32 */
+#endif
 #ifdef LINUX
 
 #include <inttypes.h>
@@ -69,70 +53,10 @@ typedef uint16_t                            WCHAR, *PWCHAR, *LPWSTR, *LPCWSTR;
 #define _Printf_format_string_
 #define _Success_(x)
 
-#endif /* LINUX */
+#endif
 
 typedef struct tdVMM_HANDLE     *VMM_HANDLE;
 typedef struct tdVMMVM_HANDLE   *VMMVM_HANDLE;
-
-
-
-//-----------------------------------------------------------------------------
-// INITIALIZATION FUNCTIONALITY BELOW:
-// Choose one way of initializing the VMM / MemProcFS.
-//-----------------------------------------------------------------------------
-
-/*
-* Initialize VMM.DLL with command line parameters. For a more detailed info
-* about the parameters please see github wiki for MemProcFS and LeechCore.
-* NB! LeechCore initialization parameters are _also_ valid to this function.
-* Important parameters are:
-*    -printf = show printf style outputs.
-*    -v -vv -vvv = extra verbosity levels.
-*    -device = device as on format for LeechCore - please see leechcore.h or
-*              Github documentation for additional information. Some values
-*              are: <file>, fpga, usb3380, hvsavedstate, totalmeltdown, pmem
-*    -remote = remote LeechCore instance - please see leechcore.h or Github
-*              documentation for additional information.
-*    -norefresh = disable background refreshes (even if backing memory is
-*              volatile memory).
-*    -memmap = specify a physical memory map given by file or specify 'auto'.
-*              example: -memmap c:\\temp\\my_custom_memory_map.txt
-*              example: -memmap auto
-*    -pagefile[0-9] = page file(s) to use in addition to physical memory.
-*              Normally pagefile.sys have index 0 and swapfile.sys index 1.
-*              Page files are in constant flux - do not use if time diff
-*              between memory dump and page files are more than few minutes.
-*              Example: 'pagefile0 swapfile.sys'
-*    -disable-python = prevent the python plugin sub-system from loading.
-*    -disable-symbolserver = disable symbol server until user change.
-*              This parameter will take precedence over registry settings.
-*    -disable-symbols = disable symbol lookups from .pdb files.
-*    -disable-infodb = disable the infodb and any symbol lookups via it.
-*    -waitinitialize = Wait for initialization to complete before returning.
-*              Normal use is that some initialization is done asynchronously
-*              and may not be completed when initialization call is completed.
-*              This includes virtual memory compression, registry and more.
-*              Example: '-waitinitialize'
-*    -userinteract = allow vmm.dll to, on the console, query the user for
-*              information such as, but not limited to, leechcore device options.
-*              Default: user interaction = disabled.
-*    -forensic = start a forensic scan of the physical memory immediately after
-*              startup if possible. Allowed parameter values range from 0-4.
-*              Note! forensic mode is not available for live memory.
-*              1 = forensic mode with in-memory sqlite database.
-*              2 = forensic mode with temp sqlite database deleted upon exit.
-*              3 = forensic mode with temp sqlite database remaining upon exit.
-*              4 = forensic mode with static named sqlite database (vmm.sqlite3).
-*              Example -forensic 4
-*
-* -- argc
-* -- argv
-* -- ppLcErrorInfo = optional pointer to receive a function allocated memory of
-*              struct LC_CONFIG_ERRORINFO with extended error information upon
-*              failure. Any memory received should be free'd by caller by
-*              calling LcMemFree().
-* -- return = VMM_HANDLE on success for usage in subsequent API calls. NULL=fail.
-*/
 EXPORTED_FUNCTION _Success_(return != NULL)
 VMM_HANDLE VMMDLL_Initialize(_In_ DWORD argc, _In_ LPSTR argv[]);
 
